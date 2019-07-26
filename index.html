@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>朱's_POMODORO</title>
+    <link href="/F2E番茄鐘/font/Fjalla_One/FjallaOne-Regular.ttf" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap&subset=chinese-traditional" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="css/web_layout.css">
+
+
+</head>
+<body>
+        <css-doodle id="flower_doodle">
+                :doodle {
+                  flex: none;
+                  @grid: 1x24;
+                  @size: 100vmin;
+                }
+                --transform: scale(@r(.8, 1.2)) translateX(@r(-200%, 200%)) translateY(@r(-5%, 35%));
+                z-index: 2;
+                color: @pn(#fff, #8b4480, #f9d51e, #36a47b, #7db13c, #ea695c, #0059b2, #74a9c3);
+                transform-origin: 50% 100%;
+                transform: var(--transform);
+              
+                ::before {
+                  position: absolute;
+                  bottom: 38vmin;
+                  left: -2vmin;
+                  content: "✿";
+                  font-size: 15vmin;
+                  -webkit-text-stroke: .4vmin;
+                }
+                ::after {
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  content: "(";
+                  font-size: 20vmin;
+                  transform: rotate(60deg) skew(60deg) scale(1.2, 1.8);
+                }
+              
+                @random {
+                  ::after {
+                    content: ")";
+                    left: 1.7vmin;
+                    bottom: -3vmin;
+                  }
+                }
+              
+                @nth(5, 10, 15, 20, 24) {
+                  z-index: 1;
+                  color: #fff;
+                }
+              
+                @nth(1, 3, 9, 16, 19) {
+                  ::after {
+                    bottom: 0;
+                    left: 0;
+                    content: "(";
+                  }
+              
+                  animation: swingLeft @r(1.5, 3)s ease infinite alternate both;
+              
+                  ::before {
+                    animation: beforeLeft @lr()s ease infinite alternate both;
+                  }
+                }
+              
+                @nth(5, 7, 15, 18, 23) {
+                  ::after {
+                    content: ")";
+                    left: 1.7vmin;
+                    bottom: -3vmin;
+                  }
+                  animation: swing @r(1.5, 3)s ease infinite alternate both;
+              
+                  ::before {
+                    animation: before @lr()s ease infinite alternate both;
+                  }
+                }
+              
+                @keyframes swingLeft {
+                  0% {
+                    transform: var(--transform) rotate(0deg);
+                  }
+                  100% {
+                    transform: var(--transform) rotate(7deg);
+                  }
+                }
+              
+                @keyframes beforeLeft {
+                  0% {
+                    transform: rotate(0deg);
+                  }
+                  100% {
+                    transform: rotate(7deg);
+                  }
+                }
+              
+                @keyframes swing {
+                  0% {
+                    transform: var(--transform) rotate(0deg);
+                  }
+                  100% {
+                    transform: var(--transform) rotate(-7deg);
+                  }
+                }
+              
+                @keyframes before {
+                  0% {
+                    transform: rotate(0deg);
+                  }
+                  100% {
+                    transform: rotate(-7deg);
+                  }
+                }
+              </css-doodle>
+              <css-doodle>
+                :doodle {
+                  flex: none;
+                  @grid: 1x5;
+                  @size: 100vmin;
+                  position: absolute;
+                }
+                position: fixed;
+                top: 100%;
+                left: @r(20, 80)%;
+                color: @pn(#fff, #8b4480, #f9d51e, #36a47b, #7db13c, #ea695c, #0059b2, #74a9c3);
+              
+                ::before {
+                  content: "✿";
+                  font-size: @r(5vmin, 10vmin);
+                  animation-direction: @p(reverse, initial);
+                  animation: before @p(2, 3)s linear both infinite @r(0, 6s);
+                }
+                animation: move @lp()s linear both infinite @lr();
+                animation-direction: @p(reverse, initial);
+              
+                @keyframes move {
+                  0% {
+                    transform: translateX(-@r(-300%, 600%));
+                  }
+              
+                  100% {
+                    transform: translateX(@r(300%, 600%));
+                  }
+                }
+              
+                @keyframes before {
+                  0% {
+                    transform: translateY(0%) rotate(0deg);
+                  }
+              
+                  40% {
+                    transform: translateY(-55vmin) rotate(-800deg);
+                  }
+              
+                  50% {
+                    transform: translateY(-60vmin) rotate(-1000deg);
+                  }
+              
+                  60% {
+                    transform: translateY(-55vmin) rotate(-1200deg);
+                  }
+              
+                  100% {
+                    transform: translateY(0%) rotate(-2000deg);
+                  }
+                }
+              </css-doodle>
+
+    <div id="pomodoro">
+    <div id="menu">
+<div class="menu_list">
+ <div class="menu_a1"><img  src="img/icon-analysis.svg"></div>
+ <div class="menu_a2"><img src="img/icon-list.svg"></div>
+</div>
+    </div>
+    <div id="main" >
+        <div class="top">
+            <span class="date">2019.07.17  星期三13:50</span>
+        </div>
+            <div class="left">
+                    <div class="time">
+                        25:00
+                    </div>
+                    <div class="player">
+                        <span class="circle1"><img src="img/icon-bell.svg" style=" position:relative;   top:11px;"></span>
+                        <span class="circle2"><img src="img/icon-play--orange.svg" style=" position:relative;   top:20px;"/></span>
+                        <span class="circle1"><img src="img/icon-cancel.svg"style=" position:relative;   top:11px;"/></span>
+                    </div>
+                </div>
+<div class="right">
+
+    <table  border="0px solid #fff;" cellpadding="17" cellspacing="0">
+            <tr><td align="center"valign="middle"><span class="circle3"></span></td><td class="t1">構思番茄鐘UI介面</td></tr>
+            <tr ><td align="center"valign="middle" style="padding-top:35px"><span class="circle4"></span></td><td class="t2" style="padding-top:35px">學習javascript</td></tr>
+            <tr><td align="center"valign="middle"><span class="circle4"></span></td><td class="t2">學習網頁切版</td></tr>
+            <tr><td align="center"valign="middle"><span class="circle4"></span></td><td class="t2">設計番茄鐘介面</td></tr>
+</table>
+
+
+</div>
+
+
+
+
+        <img class="tomato_orange animated bounceInUp" src="img/tomato--orange.svg">
+    </div>
+</div>
+
+
+
+    <script src="https://unpkg.com/css-doodle@0.7.2/css-doodle.min.js"></script>
+    <script>
+    document.addEventListener('click', function() {
+        document.querySelectorAll('css-doodle').forEach(function(o){ o.update() })
+      })
+      document.addEventListener('touchstart', function() {
+        document.querySelectorAll('css-doodle').forEach(function(o){ o.update() })
+      })</script>
+</body>
+</html>
