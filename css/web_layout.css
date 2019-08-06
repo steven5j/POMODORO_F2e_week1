@@ -16,12 +16,7 @@ body{
 }
 
 
-#flower_doodle{
-    position:fixed;
-    top:0;
-    left:0;
-    z-index: 1;
-}
+
 #pomodoro{
     width:1440px;
     height:900px;
@@ -191,6 +186,13 @@ line-height: 36px;
 .circle4:hover{
     background-color: #E8E8E8;
     box-shadow:inset 0px 0px 0px 5px rgba(48,64,48,1),0px 0px 5px 5px rgba(240,132,72,1);
+}
+
+#flower_doodle{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index: 1;
 }
 
 .animated {
